@@ -24,10 +24,11 @@ class RemoteProcess:
         self.remote = subprocess.Popen(["ssh", "%s@%s" % (self.user, self.host), "%s%s%s" % (self.sudo, self.new_context, self.command)])
         print("execute binary on %s with %s" % (self.host, self.command))
 
-    def execute(self, command, is_sudo, will_wait=True):
+    def execute(self, command, is_sudo=False, will_wait=True):
         remote = subprocess.Popen(["ssh", "%s@%s" % (self.user, self.host), "%s%s%s" % (self.sudo, self.new_context, command)])
         if will_wait:
             remote.wait()
+        return remote
         print("execute binary on %s with %s" % (self.host, command))
 
     def get(self, filename, cur):

@@ -35,8 +35,8 @@ class connect:
     def __exit__(self, etype, value, traceback):
         pass
 
-    def execute(self, command, is_sudo=False):
-        self.remote.execute(command, is_sudo)
+    def execute(self, command, is_sudo=False, will_wait=True):
+        return self.remote.execute(command, is_sudo, will_wait)
 
     def get(self, f, t):
         self.remote.get(f, t)
