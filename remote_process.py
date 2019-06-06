@@ -28,8 +28,8 @@ class RemoteProcess:
         remote = subprocess.Popen(["ssh", "%s@%s" % (self.user, self.host), "%s%s%s" % (self.sudo, self.new_context, command)])
         if will_wait:
             remote.wait()
-        return remote
         print("execute binary on %s with %s" % (self.host, command))
+        return remote
 
     def get(self, filename, cur):
         remote = subprocess.Popen(["scp", "%s@%s:~/%s/%s" % (self.user, self.host, self.host_idx, filename), cur])

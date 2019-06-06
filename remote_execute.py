@@ -12,6 +12,7 @@ def execute(command, servers=config.servers, is_shared=True, context_pre = "", w
         remote = RemoteProcess(server, user, context_pre, command, is_shared, is_sudo, sudo_passwd)
         remote.start()
         remotes.append(remote)
+        remote.wait()
 
     if will_wait:
         for remote in remotes:
